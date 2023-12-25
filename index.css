@@ -57,16 +57,56 @@ header{
 .navbar a{
     color: var(--text-color);
     font-size: var(--p-font);
-    font-weight: 600;
+    font-weight: bold;
     padding: 10px 25px;
     margin: 0 2px;
-    border-radius: 0.5rem;
-    transition: all .40s ease;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s ease;
 }
 
-.navbar a:hover{
+a:hover{
     background: var(--text-color);
     color: var(--bg-color);
+}
+
+a::before {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    height: 12px;
+    width: 12px;
+    border: 3px solid red;
+    border-width: 0 0 3px 3px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 12px;
+    width: 12px;
+    border: 3px solid red;
+    border-width: 3px 3px 0 0;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+a:hover::before {
+    opacity: 1;
+    bottom: -8px;
+    left: -8px;
+}
+
+a:hover::after {
+    opacity: 1;
+    top: -8px;
+    right: -8px;
 }
 
 #menu-icon{
@@ -145,7 +185,7 @@ header.sticky{
     border-bottom: 1px solid red;
 }
 
-
+/* about */
 .about{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -172,6 +212,49 @@ header.sticky{
     border-radius: 50px;
 }
 
+/* skill */
+.portofolio-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px,auto));
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
+.row img{
+    height: auto;
+    width: 200px;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.row{
+    padding: 25px;
+    background: #000;
+    border-radius: 0.5rem;
+    transition: all .40s ease;
+}
+
+.main-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.row h6{
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.row:hover{
+    transform: scale(1.01) translateY(-5px);
+    cursor: pointer;
+}
+
+/* hobby */
 .main-text{
     text-align: center;
 }
@@ -222,47 +305,8 @@ header.sticky{
     border-top: 5px solid var(--text-color)
 }
 
-.portofolio-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px,auto));
-    align-items: center;
-    gap: 2rem;
-    margin-top: 5rem;
-}
 
-.row img{
-    height: auto;
-    width: 200px;
-    border-radius: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.row{
-    padding: 25px;
-    background: #000;
-    border-radius: 0.5rem;
-    transition: all .40s ease;
-}
-
-.main-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.row h6{
-    font-size: 25px;
-    font-weight: 700;
-    color: var(--text-color);
-    letter-spacing: 1px;
-}
-
-.row:hover{
-    transform: scale(1.01) translateY(-5px);
-    cursor: pointer;
-}
-
+/* contact */
 .contact{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -377,4 +421,66 @@ header.sticky{
     font-size: 20px;
     padding: 10px;
     border-radius: 0.5rem;
+}
+
+@media (max-width: 1325px){
+    header{
+        padding: 16px 3%;
+    }
+    header.sticky{
+        padding: 8px 3%;
+    }
+    section{
+        padding: 130px 3% 60px;
+    }
+}
+
+@media (max-width: 970px){
+    :root{
+        --h1-font: 4.2rem;
+        --h2-font: 2.9rem;
+        --p-font: 1rem;
+    }
+    .home{
+        height: 85vh;
+    }
+    .about{
+        grid-template-columns: 1fr;
+    }
+    .about-img{
+        text-align: center;
+    }
+    .contact{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 830px) {
+    #menu-icon{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--other-color);
+        text-align: left;
+        transition: all .40s ease;
+    }
+    .navbar a{
+        display: block;
+        padding: 1rem;
+        margin: 1rem;
+    }
+    .navbar.active{
+        top: 100%;
+    }
+    :root{
+        --h1-font: 4.2rem;
+        --h2-font: 2.9rem;
+        --p-font: 1rem;
+    }
 }
